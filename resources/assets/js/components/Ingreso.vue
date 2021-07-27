@@ -512,6 +512,24 @@
 
 
             },
+            listarArticulo(buscar, criterio){
+                let me=this;
+               
+                var url= '/articulo/listarArticulo?buscar='+ buscar + '&criterio='+ criterio;
+                
+                axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    // handle success
+                    me.arrayArticulo = respuesta.articulos.data;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
+                });
+            },
             registrarPersona(){
                 if (this.validarPersona()) {
                     return;

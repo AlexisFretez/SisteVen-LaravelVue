@@ -46529,6 +46529,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         agregarDetalleModal: function agregarDetalleModal() {
             var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
         },
+        listarArticulo: function listarArticulo(buscar, criterio) {
+            var me = this;
+
+            var url = '/articulo/listarArticulo?buscar=' + buscar + '&criterio=' + criterio;
+
+            axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                // handle success
+                me.arrayArticulo = respuesta.articulos.data;
+            }).catch(function (error) {
+                // handle error
+                console.log(error);
+            }).then(function () {
+                // always executed
+            });
+        },
         registrarPersona: function registrarPersona() {
             if (this.validarPersona()) {
                 return;
