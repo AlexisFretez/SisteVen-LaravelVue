@@ -1,0 +1,16 @@
+//Con este comado vas a poder Instaalr la carpeta Vendo de cualquier sistema Laravel solo cambiar por tu Usuario
+
+
+1- usuario='alexis' && proy='' && dir='/var/www/'$proy && sudo chown -R $usuario:$usuario $dir && setfacl -R -m www-data:rwx $dir && setfacl -R -d -m www-data:rwx $dir && setfacl -R -m $usuario:rwx $dir && setfacl -R -d -m $usuario:rwx $dir
+
+
+2- path='www' && dir='/var/'$path && user='alexis' && group='www-data' && sudo setfacl -R -m $group:rwx $dir && sudo setfacl -R -d -m $group:rwx $dir
+
+
+
+https://tecadmin.net/install-multiple-php-version-apache-ubuntu/
+https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-18-04-es
+https://www.pibeca.com/2018/01/08/importar-exportar-una-base-de-datos-en-mysql-y-mariadb-por-consola/
+https://akrabat.com/turn-off-foreign-key-checks-when-restoring-a-mysql-file-dump/
+https://yonedev.com/snippet/git-flow-desde-terminal/
+http://registrate.gq/17-02-21.sql
