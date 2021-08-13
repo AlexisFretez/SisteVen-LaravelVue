@@ -132,6 +132,14 @@
                                         <input type="text" class="form-control" v-model="num_comprobante" placeholder="000xx">
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div v-show="errorIngreso" class="form-group row div-error">
+                                    <div class="text-center text-error">
+                                        <div v-for="error in errorMostrarMsjIngreso" :key="error" v-text="error"></div>
+                                    </div>
+
+                                </div>
+                                </div>
                             </div>
                             <div class="form-group row border">
                                 <div class="col-md-6">
@@ -549,24 +557,34 @@
                     // always executed
                 });
             },
-            registrarPersona(){
-                if (this.validarPersona()) {
+            registrarIngreso(){
+                if (this.validarIngreso()) {
                     return;
                 }
                 let me = this;
-                axios.post('/user/registrar', {
-                    'nombre': this.nombre,
-                    'tipo_documento': this.tipo_documento,
-                    'num_documento': this.num_documento,
-                    'direccion': this.direccion,
-                    'telefono': this.telefono,
-                    'email': this.email,
-                    'usuario': this.usuario,
-                    'password': this.password,
-                    'idrol': this.idrol
+                axios.post('/ingreso/registrar', {
+                    'idproveedor': this.idproveedor,
+                    'tipo_comprobante': this.tipo_comprobante,
+                    'serie_comprobante': this.serie_comprobante,
+                    'num_comprobante': this.num_comprobante,
+                    'impuesto': this.impuesto,
+                    'total': this.total,
+                    'data': this.arrayDetalle,
                 }).then(function (response) {
-                    me.cerrarModal();
-                    me.listarPersona(1, '' , 'nombre');
+                    me.listado=1;
+                    me.listarIngreso(1, '' , 'num_comprobante');
+                    me.idproveedor=0;
+                    me.tipo_comprobante='BOLETA';
+                    me.serie_comprobante='';
+                    me.num_comprobante='';
+                    me.impuesto=0.10;
+                    me.total=0.0;
+                    me.idarticulo=0;
+                    me.articulo='';
+                    me.cantidad=0;
+                    me.precio=0;
+                    me.arrayDetalle=[];
+
                 }).catch(function (error) {
                     console.log(error);
                     
@@ -703,28 +721,42 @@
                     }
                     })
             },
-            validarPersona(){
-                this.errorPersona = 0;
-                this.errorMostrarMsjPersona = [];
+            validarIngreso(){
+                this.errorIngreso=0;
+                this.errorMostrarMsjIngreso = [];
 
+                if (this.idproveedor==0)this.errorMostrarMsjIngreso.push("Seleccione Proveedor.");
+                if (this.tipo_comprobante==0)this.errorMostrarMsjIngreso.push("Seleccione Comprobante.");
+                if (!this.num_comprobante)this.errorMostrarMsjIngreso.push("Ingrese  Numero Comprobante.");
+                if (!this.impuesto)this.errorMostrarMsjIngreso.push("Ingrese  Impuesto de Compra.");
+                if (this.arrayDetalle.length<=0)this.errorMostrarMsjIngreso.push("Ingrese Detalle.");
+                if(this.errorMostrarMsjIngreso.length)this.errorIngreso = 1;
 
-                if (!this.nombre)this.errorMostrarMsjPersona.push("El Nombre no puede ir Vacio.");
-                if (!this.usuario)this.errorMostrarMsjPersona.push("El Nombre Usuario no puede ir Vacio.");
-
-                if (!this.password)this.errorMostrarMsjPersona.push("La Contaseña es Obligatoria.");
-
-                if (this.rol==0)this.errorMostrarMsjPersona.push("Seleccione un ROl.");
-                
-                if(this.errorMostrarMsjPersona.length) this.errorPersona = 1;
-
-                return this.errorPersona;
+                return this.errorIngreso;
                 
             },
             mostrarDetalle(){
+                let me = this;
                 this.listado=0;
+
+                me.idproveedor=0;
+                    me.tipo_comprobante='BOLETA';
+                    me.serie_comprobante='';
+                    me.num_comprobante='';
+                    me.impuesto=0.10;
+                    me.total=0.0;
+                    me.idarticulo=0;
+                    me.articulo='';
+                    me.cantidad=0;
+                    me.precio=0;
+                    me.arrayDetalle=[];
+
+
             },
             ocultarDetalle(){
                 this.listado=1;
+
+                
             },
            
         },
