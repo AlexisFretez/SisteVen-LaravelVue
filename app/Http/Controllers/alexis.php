@@ -240,17 +240,17 @@
                             <div class="form-group row border">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <label for="">Proveedor</label>
+                                        <label for="">Proveedor(*)</label>
                                      <p v-text="proveedor"></p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="">Impuesto</label>
+                                    <label for="">Impuesto(*)</label>
                                     <p v-text="impuesto"></p>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Tipo Comprobante</label>
+                                        <label for="">Tipo Comprobante(*)</label>
                                         <p v-text="tipo_comprobante"></p>
                                     </div>
                                 </div>
@@ -262,7 +262,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Numero Comprobante</label>
+                                        <label>Numero Comprobante(*)</label>
                                         <p v-text="num_comprobante"></p>
                                     </div>
                                 </div>
@@ -295,22 +295,22 @@
                                                     </td>
                                                 </tr>
                                                 <tr style="background-color: #CEECFS;">
-                                                    <td colspan="3" align="right"><strong> Total Parcial:</strong></td>
+                                                    <td colspan="4" align="right"><strong> Total Parcial:</strong></td>
                                                     <td>$ {{ totalParcial=(total-totalImpuesto).toFixed(2) }}</td>
                                                 </tr>
                                                 <tr style="background-color: #CEECFS;">
-                                                    <td colspan="3" align="right"><strong> Total Impuesto:</strong></td>
-                                                    <td>$ {{ totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
+                                                    <td colspan="4" align="right"><strong> Total Impuesto:</strong></td>
+                                                    <td>$ {{ totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
                                                 </tr>
                                                 <tr style="background-color: #CEECFS;">
-                                                    <td colspan="3" align="right"><strong> Total Neto:</strong></td>
-                                                    <td>$ {{ total }}</td>
+                                                    <td colspan="4" align="right"><strong> Total Neto:</strong></td>
+                                                    <td>$ {{ total=calcularTotal }}</td>
                                                 </tr>  
 
                                             </tbody>
                                             <tbody v-else>
                                                 <tr>
-                                                    <td colspan="4">
+                                                    <td colspan="5">
                                                         NO hAy Nada
                                                     </td>
                                                 </tr>
@@ -321,7 +321,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <button type="button" @click="ocultarDetalle()" class="btn btn-danger">Cerrar</button>
+                                    <button type="button" @click="ocultarDetalle()" class="btn btn-secondary">Cerrar</button>
                                     
                                 </div>
                             </div>
