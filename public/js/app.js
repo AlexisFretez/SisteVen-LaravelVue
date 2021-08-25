@@ -46347,6 +46347,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -46442,6 +46443,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+=======
+>>>>>>> feature_1
 
 
 
@@ -46770,17 +46773,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         validarIngreso: function validarIngreso() {
             this.errorIngreso = 0;
             this.errorMostrarMsjIngreso = [];
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature_1
             if (this.idproveedor == 0) this.errorMostrarMsjIngreso.push("Seleccione Proveedor.");
             if (this.tipo_comprobante == 0) this.errorMostrarMsjIngreso.push("Seleccione Comprobante.");
             if (!this.num_comprobante) this.errorMostrarMsjIngreso.push("Ingrese  Numero Comprobante.");
             if (!this.impuesto) this.errorMostrarMsjIngreso.push("Ingrese  Impuesto de Compra.");
             if (this.arrayDetalle.length <= 0) this.errorMostrarMsjIngreso.push("Ingrese Detalle.");
             if (this.errorMostrarMsjIngreso.length) this.errorIngreso = 1;
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature_1
             return this.errorIngreso;
         },
         mostrarDetalle: function mostrarDetalle() {
             var me = this;
             this.listado = 0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature_1
             me.idproveedor = 0;
             me.tipo_comprobante = 'BOLETA';
             me.serie_comprobante = '';

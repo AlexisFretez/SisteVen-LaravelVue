@@ -624,7 +624,13 @@
                         });
                          
                     }
+<<<<<<< HEAD
                     
+=======
+
+                    
+
+>>>>>>> feature_1
             },
             listarArticulo(buscar, criterio){
                 let me=this;
@@ -671,6 +677,10 @@
                     me.cantidad=0;
                     me.precio=0;
                     me.arrayDetalle=[];
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature_1
                 }).catch(function (error) {
                     console.log(error);
                     
@@ -710,6 +720,7 @@
                 this.modal = 1;
                 this.tituloModal = 'Seleccione Articulo';
             },
+<<<<<<< HEAD
             desactivarIngreso(id){
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -761,18 +772,128 @@
             validarIngreso(){
                 this.errorIngreso=0;
                 this.errorMostrarMsjIngreso = [];
+=======
+            desactivarUsuario(id){
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-success',
+                        cancelButton: 'btn btn-danger'
+                    },
+                    buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+                    title: 'Esta seguro?',
+                    text: "de Desactivar Este Usuario!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Aceptar!',
+                    cancelButtonText: 'No, Cancelar!',
+                    reverseButtons: true
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+
+                         let me = this;
+                axios.put('/user/desactivar', {
+                    'id': id
+                }).then(function (response) {
+                    me.listarPersona(1, '' , 'nombre');
+                    swalWithBootstrapButtons.fire(
+                        'Desactivado!',
+                        'El registro se desactivo.',
+                        'danger'
+                        )
+                }).catch(function (error) {
+                    console.log(error);
+                    
+                })
+
+                        
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        // swalWithBootstrapButtons.fire(
+                        // 'Cancelled',
+                        // 'Your imaginary file is safe :)',
+                        // 'error'
+                        // )
+                    }
+                    })
+            },
+            activarUsuario(id){
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-success',
+                        cancelButton: 'btn btn-danger'
+                    },
+                    buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+                    title: 'Esta seguro?',
+                    text: "de Activar este Usuario!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Aceptar!',
+                    cancelButtonText: 'No, Cancelar!',
+                    reverseButtons: true
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+
+                         let me = this;
+                axios.put('/user/activar', {
+                    'id': id
+                }).then(function (response) {
+                    me.listarPersona(1, '' , 'nombre');
+                    swalWithBootstrapButtons.fire(
+                        'Activado!',
+                        'El registro se desactivo.',
+                        'success'
+                        )
+                }).catch(function (error) {
+                    console.log(error);
+                    
+                })
+
+                        
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        // swalWithBootstrapButtons.fire(
+                        // 'Cancelled',
+                        // 'Your imaginary file is safe :)',
+                        // 'error'
+                        // )
+                    }
+                    })
+            },
+            validarIngreso(){
+                this.errorIngreso=0;
+                this.errorMostrarMsjIngreso = [];
+
+>>>>>>> feature_1
                 if (this.idproveedor==0)this.errorMostrarMsjIngreso.push("Seleccione Proveedor.");
                 if (this.tipo_comprobante==0)this.errorMostrarMsjIngreso.push("Seleccione Comprobante.");
                 if (!this.num_comprobante)this.errorMostrarMsjIngreso.push("Ingrese  Numero Comprobante.");
                 if (!this.impuesto)this.errorMostrarMsjIngreso.push("Ingrese  Impuesto de Compra.");
                 if (this.arrayDetalle.length<=0)this.errorMostrarMsjIngreso.push("Ingrese Detalle.");
                 if(this.errorMostrarMsjIngreso.length)this.errorIngreso = 1;
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature_1
                 return this.errorIngreso;
                 
             },
             mostrarDetalle(){
                 let me = this;
                 this.listado=0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature_1
                 me.idproveedor=0;
                     me.tipo_comprobante='BOLETA';
                     me.serie_comprobante='';
@@ -784,9 +905,18 @@
                     me.cantidad=0;
                     me.precio=0;
                     me.arrayDetalle=[];
+<<<<<<< HEAD
             },
             ocultarDetalle(){
                 this.listado=1;
+=======
+
+
+            },
+            ocultarDetalle(){
+                this.listado=1;
+
+>>>>>>> feature_1
                 
             },
             verIngreso(id){
