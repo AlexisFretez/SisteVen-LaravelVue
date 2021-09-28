@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+Vue.config.productionTip = false
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,6 +31,13 @@ Vue.component('rol', require('./components/Rol.vue'));
 Vue.component('user', require('./components/User.vue'));
 
 Vue.component('ingreso', require('./components/Ingreso.vue'));
+
+Vue.component('venta', require('./components/Venta.vue'));
+Vue.component('dashboard', require('./components/Dashboard.vue'));
+Vue.component('consultaingreso', require('./components/ConsultaIngreso.vue'));
+
+Vue.component('consultaventa', require('./components/ConsultaVenta.vue'));
+
 const app = new Vue({
     el: '#app',
     data :{

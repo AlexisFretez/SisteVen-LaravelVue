@@ -420,7 +420,6 @@
                 ingreso_id : 0,
                 idproveedor : 0,
                 proveedor : '',
-                nombre : '',
                 tipo_comprobante : 'BOLETA',
                 serie_comprobante : '',
                 num_comprobante : '',
@@ -621,12 +620,16 @@
                             idarticulo: data['id'],
                             articulo: data['nombre'],
                             cantidad: 1,
-                            precio: data['precio_venta']
-                            //precio: 1
+                            precio: 1
                         });
                          
                     }
-    },
+<<<<<<< HEAD
+                    
+=======
+                    
+>>>>>>> feature_1
+            },
             listarArticulo(buscar, criterio){
                 let me=this;
                
@@ -672,7 +675,9 @@
                     me.cantidad=0;
                     me.precio=0;
                     me.arrayDetalle=[];
-
+<<<<<<< HEAD
+=======
+>>>>>>> feature_1
                 }).catch(function (error) {
                     console.log(error);
                     
@@ -712,6 +717,7 @@
                 this.modal = 1;
                 this.tituloModal = 'Seleccione Articulo';
             },
+<<<<<<< HEAD
             desactivarIngreso(id){
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -757,6 +763,10 @@
         }
         })
 },
+            validarIngreso(){
+                this.errorIngreso=0;
+                this.errorMostrarMsjIngreso = [];
+=======
             desactivarUsuario(id){
                 const swalWithBootstrapButtons = Swal.mixin({
                     customClass: {
@@ -850,7 +860,7 @@
             validarIngreso(){
                 this.errorIngreso=0;
                 this.errorMostrarMsjIngreso = [];
-
+>>>>>>> feature_1
                 if (this.idproveedor==0)this.errorMostrarMsjIngreso.push("Seleccione Proveedor.");
                 if (this.tipo_comprobante==0)this.errorMostrarMsjIngreso.push("Seleccione Comprobante.");
                 if (!this.num_comprobante)this.errorMostrarMsjIngreso.push("Ingrese  Numero Comprobante.");

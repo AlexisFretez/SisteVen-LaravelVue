@@ -18,6 +18,7 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     
+    Route::get('/dashboard', 'DashboardController');
 
     Route::get('/main', function () {
         return view('contenido/contenido');
@@ -41,6 +42,8 @@ Route::group(['middleware'=>['auth']],function(){
      Route::get('/articulo/buscarArticulo', 'ArticuloController@buscarArticulo');
 
      Route::get('/articulo/listarArticulo', 'ArticuloController@listarArticulo');
+     Route::get('/articulo/listarPdf','ArticuloController@listarPdf')->name('articulos_pdf');
+
 
      //Rutas para Proveedor
     Route::get('/proveedor', 'ProveedorController@index');
@@ -62,6 +65,19 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/cliente', 'ClienteController@index');
     Route::post('/cliente/registrar', 'ClienteController@store');
     Route::put('/cliente/actualizar', 'ClienteController@update');
+    Route::get('/cliente/selectCliente', 'ClienteController@selectCliente');
+
+    //Rutas para Articulos
+    Route::get('/articulo/buscarArticuloVenta', 'ArticuloController@buscarArticuloVenta');
+    Route::get('/articulo/listarArticuloVenta', 'ArticuloController@listarArticuloVenta');
+
+    //Rutas para Ventas
+    Route::get('/venta', 'VentaController@index');
+    Route::post('/venta/registrar', 'VentaController@store');
+    Route::put('/venta/desactivar', 'VentaController@desactivar');
+    Route::get('/venta/obtenerCabecera', 'VentaController@obtenerCabecera');
+    Route::get('/venta/obtenerDetalles', 'VentaController@obtenerDetalles');
+    Route::get('/venta/pdf/{id}', 'VentaController@pdf')->name('venta_pdf');
 
     });
 
@@ -82,6 +98,10 @@ Route::group(['middleware'=>['auth']],function(){
      Route::put('/articulo/activar', 'ArticuloController@activar');
      Route::get('/articulo/buscarArticulo', 'ArticuloController@buscarArticulo');
      Route::get('/articulo/listarArticulo', 'ArticuloController@listarArticulo');
+     Route::get('/articulo/buscarArticuloVenta', 'ArticuloController@buscarArticuloVenta');
+
+     Route::get('/articulo/listarArticuloVenta', 'ArticuloController@listarArticuloVenta');
+     Route::get('/articulo/listarPdf','ArticuloController@listarPdf')->name('articulos_pdf');
 
 
      //Rutas para Proveedor
@@ -103,6 +123,18 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/cliente', 'ClienteController@index');
     Route::post('/cliente/registrar', 'ClienteController@store');
     Route::put('/cliente/actualizar', 'ClienteController@update');
+    Route::get('/cliente/selectCliente', 'ClienteController@selectCliente');
+
+
+    //Rutas para Ventas
+    Route::get('/venta', 'VentaController@index');
+    Route::post('/venta/registrar', 'VentaController@store');
+    Route::put('/venta/desactivar', 'VentaController@desactivar');
+    Route::get('/venta/obtenerCabecera', 'VentaController@obtenerCabecera');
+    Route::get('/venta/obtenerDetalles', 'VentaController@obtenerDetalles');
+    Route::get('/venta/pdf/{id}', 'VentaController@pdf')->name('venta_pdf');
+
+    
 
     //Rutas para Roles
     Route::get('/rol', 'RolController@index');
